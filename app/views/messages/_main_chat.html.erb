@@ -1,7 +1,16 @@
 <div class="chat-header">
+  <div class="left-header">
+    <div class="header-title">
+      <%= @room.name %>
+    </div>
+  </div>
+  <div class="right-header">
+
+  <div class="messages">
+  <%= render partial: 'message', collection: @messages %>
 </div>
 
-<div class="messages">
+
 <%= form_with model: [@room, @message], class: 'form', local: true do |f| %>
   <div class="form-input">
     <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
@@ -12,15 +21,4 @@
   </div>
   <%= f.submit '送信', class: 'form-submit' %>
 <% end %>
-</div>
 
-<div class="form">
-  <div class="form-input">
-    <input class="form-message" placeholder= "type a message">
-        <label class="form-image">
-      <span class="image-file">画像</span>
-      <input type="file" class="hidden">
-    </label>
-  </div>
-  <input class="form-submit" type="submit" value="送信">
-</div>
